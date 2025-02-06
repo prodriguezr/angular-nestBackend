@@ -89,7 +89,6 @@ export class AuthService {
   }
 
   update(id: number, updateAuthDto: UpdateAuthDto) {
-    console.log(updateAuthDto);
     return `This action updates a #${id} auth`;
   }
 
@@ -99,8 +98,6 @@ export class AuthService {
 
   async getJwtToken(payload: JwtPayload) {
     const token = await this.jwtService.signAsync(payload);
-
-    console.log(token);
 
     return token;
   }

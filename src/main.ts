@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
@@ -12,6 +12,8 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.useLogger(new Logger());
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -25,8 +27,10 @@ async function bootstrap() {
 
   // app.useGlobalFilters(new HttpExceptionFilter());
 
+  const corsOrigins = process.env.CORS_ORIGINS?.split(',') ?? [];
+
   app.enableCors({
-    origin: ['https://midominio.com'],
+    origin: corsOrigins,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });

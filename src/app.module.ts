@@ -23,4 +23,11 @@ import { AuthModule } from './auth/auth.module';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule {
+  // private readonly logger = new Logger(AppModule.name);
+  // private readonly mongoUri: string;
+  // constructor(private readonly configService: ConfigService) {
+  //   this.mongoUri = `mongodb://${configService.get<string>('MONGO_USER')}:${configService.get<string>('MONGO_PASS')}@${configService.get<string>('MONGO_HOST')}:${configService.get<string>('MONGO_PORT')}/${configService.get<string>('MONGO_DB')}?authSource=${configService.get<string>('MONGO_AUTH_SOURCE')}`;
+  //   this.logger.log(this.mongoUri);
+  // }
+}
